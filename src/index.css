@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.half-background {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-229deg, white 50%, #ffd700 50%);
+}

@@ -7,22 +7,38 @@ Source: https://sketchfab.com/3d-models/pizza-40d50989fec1460f8838b608d999ccd0
 Title: Pizza
 */
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useGLTF } from "@react-three/drei";
 
+const getPizzaScale = () => {
+  if (window.innerWidth < 640) return 0.4; // Small screens
+  if (window.innerWidth < 1024) return 0.22; // Medium screens
+  return 0.3; // Large screens
+};
+
 export function Pizza(props) {
   const { nodes, materials } = useGLTF("models/pizza.glb");
+  const [scale, setScale] = useState(getPizzaScale());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScale(getPizzaScale());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <group
       {...props}
       dispose={null}
+      scale={scale}
     >
-      <group
-        rotation={[-Math.PI / 0.44, 0.47, 0.3]}
-        scale={0.3}
-      >
+      <group rotation={[-Math.PI / 0.44, 0.47, 0.3]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             geometry={nodes.pizza_pizza_0.geometry}

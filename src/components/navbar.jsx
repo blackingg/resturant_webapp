@@ -17,7 +17,7 @@ const Navbar = ({ items }) => {
   };
 
   return (
-    <nav className="w-full absolute z-50 px-4 py-4 flex justify-between md:items-center font-medium">
+    <nav className="z-50 w-full absolute px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
       <CiPizza
         color="#B22222"
         size={50}

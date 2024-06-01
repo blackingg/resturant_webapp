@@ -46,8 +46,8 @@ const HeroSection = (props) => {
 
   return (
     <>
-      <div className="flex h-[100vh] pt-16 w-screen">
-        <h1 className="ml-16 pt-16 pr-16 w-10 text-[#B22222] text-8xl font-semibold">
+      <div className="flex flex-col pt md:flex-row h-[100vh] pt-16 w-screen">
+        <h1 className="z-20 ml-5 md:ml-16 pt-20 md:pt-16 pr-16 w-10 text-[#B22222] text-7xl md:text-8xl font-semibold">
           Welcome to Pizza Hut
         </h1>
         <MotionConfig transition={{ type: "spring" }}>

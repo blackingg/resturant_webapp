@@ -17,3 +17,11 @@ body {
   height: 100vh;
   background: linear-gradient(-229deg, white 50%, #ffd700 50%);
 }
+
+@media (max-width: 640px) {
+  .half-background {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, white 40%, #ffd700 60%);
+  }
+}

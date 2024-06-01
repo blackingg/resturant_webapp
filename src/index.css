@@ -22,6 +22,6 @@ body {
   .half-background {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, white 40%, #ffd700 60%);
+    background: linear-gradient(135deg, white 50%, #ffd700 50%);
   }
 }

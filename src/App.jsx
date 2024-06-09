@@ -13,14 +13,14 @@ import { useState } from "react";
 
 import { AiFillHome } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
-import { FaPenNib } from "react-icons/fa";
+import { PiOvenFill } from "react-icons/pi";
 import { IoMdInformationCircle } from "react-icons/io";
 
 function App() {
   const navItems = [
     { label: "Home", page: "", sign: AiFillHome },
     { label: "Shop", page: "shop", sign: FaCartShopping },
-    { label: "Recipes", page: "recipes", sign: FaPenNib },
+    { label: "Recipes", page: "recipes", sign: PiOvenFill },
     { label: "About Us", page: "about", sign: IoMdInformationCircle },
   ];
 

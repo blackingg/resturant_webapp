@@ -35,7 +35,7 @@ const Recipes = () => {
         Pizza Recipes
       </h1>
       {loading ? (
-        <div className="flex items-center justify-center">
+        <div className="h-screen w-screen flex items-center justify-center">
           <div className=" loading-icon "></div>
         </div>
       ) : (

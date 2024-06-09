@@ -8,7 +8,7 @@ import RecipeDetails from "./pages/recipeDetails";
 import { LoadingScreen } from "./pages/loadingScreen";
 
 import Navbar from "./components/navbar";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 import { AiFillHome } from "react-icons/ai";
@@ -61,6 +61,10 @@ function App() {
         <Route
           path="/recipes/:id"
           element={<RecipeDetails />}
+        />
+        <Route
+          path="*"
+          element={<Navigate to="/" />}
         />
       </Routes>
     </>

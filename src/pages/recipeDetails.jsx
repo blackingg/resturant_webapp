@@ -32,17 +32,35 @@ const RecipeDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <p className="text-center">Loading...</p>;
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <div className=" loading-icon "></div>
+      </div>
+    );
   }
 
   if (!recipe) {
-    return <p className="text-center">Recipe not found</p>;
+    return (
+      <p className="h-screen w-screen flex items-center justify-center gap-5">
+        <h1 className="text-4xl font-bold mb-4 text-[#B22222]">
+          Recipe not found{" "}
+        </h1>
+        <button
+          onClick={handleBackClick}
+          className="mb-4 text-[#B22222] font-semibold hover:underline"
+        >
+          <IoArrowBackCircle size={30} />
+        </button>
+      </p>
+    );
   }
 
   return (
     <div className="bg-gray-100 p-4 px-32 pt-24 pb-16">
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-[#B22222]">
+          {recipe.title}
+        </h1>
         <button
           onClick={handleBackClick}
           className="mb-4 text-[#B22222] font-semibold hover:underline"
@@ -57,7 +75,7 @@ const RecipeDetails = () => {
       />
 
       <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
-      <ul className="mb-4">
+      <ul className="mb-4 italic list-disc">
         {recipe.extendedIngredients.map((ingredient) => (
           <li key={ingredient.id}>{ingredient.original}</li>
         ))}

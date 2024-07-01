@@ -29,6 +29,17 @@ function Developer() {
         not only meet but exceed user expectations. I'm passionate about coding
         and continuously learning to improve my skills.
       </p>
+
+      <p>
+        You can check out more of my work at: {""}
+        <Link
+          target="blank"
+          to={"https://mubarakodetunde-portfolio.netlify.app/"}
+          className="text-blue-500 hover:underline"
+        >
+          22222
+        </Link>
+      </p>
     </div>
   );
 }

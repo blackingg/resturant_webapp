@@ -57,7 +57,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="flex flex-col space-x-10 lg:flex-row h-[100vh] pt-16 w-screen">
+    <div className="flex flex-col space-x-10 lg:flex-row h-[100vh] pt-16 lg:pt-10 w-screen">
       <div className="flex flex-col items-start z-20 ml-5 md:ml-16 pt-20 md:pt-16 w-3/5 text-[#6F4E37]">
         <h1 className="text-7xl w-fit h-fit md:text-8xl font-semibold">
           Welcome to The Breakfast Place

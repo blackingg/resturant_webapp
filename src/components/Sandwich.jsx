@@ -12,7 +12,7 @@ import { useGLTF } from "@react-three/drei";
 
 const getSandwichScale = () => {
   if (window.innerWidth < 640) return 50; // Small screens
-  if (window.innerWidth < 1024) return 55; // Medium screens
+  if (window.innerWidth < 1024) return 58; // Medium screens
   return 50; // Large screens
 };
 

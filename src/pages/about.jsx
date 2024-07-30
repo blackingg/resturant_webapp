@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function About() {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 p-8 pt-24 ">
-      <h1 className="text-4xl font-bold mb-4 text-[#B22222]">About Us</h1>
+      <h1 className="text-4xl font-bold mb-4 text-[#6F4E37]">About Us</h1>
       <div className="text-lg mb-4 text-left max-w-2xl ">
         <p className="mb-4">
           Welcome to our The Breakfast Place's website! Here, you can explore
@@ -28,7 +28,7 @@ function About() {
         </p>
       </div>
       <div className="text-lg mb-4 max-w-2xl">
-        <h2 className="text-3xl font-bold mb-2 text-center text-[#B22222]">
+        <h2 className="text-3xl font-bold mb-2 text-center text-[#6F4E37]">
           About the Developer
         </h2>
         <p className="mb-4 text-left">
@@ -43,8 +43,9 @@ function About() {
           coding and continuously learning to improve my skills.
         </p>
         <Link
-          to="/developer"
-          className="text-blue-500 hover:underline"
+          target="blank"
+          to={"https://mubarakodetunde-portfolio.netlify.app/"}
+          className="text-blue-500 hover:underline grid text-center"
         >
           Meet the Developer
         </Link>

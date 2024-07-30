@@ -1,7 +1,6 @@
 import Home from "./pages/home";
 import Shop from "./pages/shop";
 import About from "./pages/about";
-import Developer from "./pages/developer";
 import Recipes from "./pages/recipes";
 import RecipeDetails from "./pages/recipeDetails";
 
@@ -49,10 +48,6 @@ function App() {
         <Route
           path="/about"
           element={<About />}
-        />
-        <Route
-          path="/developer"
-          element={<Developer />}
         />
         <Route
           path="/recipes"

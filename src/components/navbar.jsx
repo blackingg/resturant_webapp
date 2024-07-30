@@ -52,7 +52,7 @@ const Navbar = ({ items }) => {
               className={`flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold md:hover:text-[#6F4E37] ${
                 currentPage === `/${item.page}`
                   ? "active text-[#6F4E37] italic md:hover:shadow-none"
-                  : "md:shadow-lg md:shadow-[#6F4E37] text-[#D2691E] md:text-[#ece0d7]"
+                  : "md:shadow-lg md:shadow-[#6F4E37] text-[#D2691E] md:text-white"
               }`}
               onClick={() => setMenuOpen(false)}
             >

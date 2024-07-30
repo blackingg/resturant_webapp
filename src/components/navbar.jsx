@@ -17,11 +17,10 @@ const Navbar = ({ items }) => {
   };
 
   return (
-    <nav className="z-50 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
+    <nav className="z-40 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
       <MdEmojiFoodBeverage
         color="#6F4E37"
         size={50}
-        className=""
       />
 
       <div
@@ -50,10 +49,10 @@ const Navbar = ({ items }) => {
           <li key={item.page}>
             <Link
               to={item.page}
-              className={`flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold text-[green-700] md:hover:text-[#6F4E37] ${
+              className={`flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold md:hover:text-[#6F4E37] ${
                 currentPage === `/${item.page}`
                   ? "active text-[#6F4E37] italic md:hover:shadow-none"
-                  : "md:shadow-lg md:shadow-[#6F4E37] text-[#ece0d7]"
+                  : "md:shadow-lg md:shadow-[#6F4E37] text-[#D2691E] md:text-[#ece0d7]"
               }`}
               onClick={() => setMenuOpen(false)}
             >

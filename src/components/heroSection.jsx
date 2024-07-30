@@ -7,6 +7,8 @@ import { Sandwich } from "./Sandwich";
 import { proxy, useSnapshot } from "valtio";
 import { easing } from "maath";
 
+import { Link } from "react-router-dom";
+
 const State = proxy({
   pointer: { x: 0, y: 0 },
 });

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBreakfastRecipes } from "../recipiesData.jsx";
+import { LoadingScreen } from "./loadingScreen.jsx";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -35,9 +36,7 @@ const Recipes = () => {
         Breakfast Recipes
       </h1>
       {loading ? (
-        <div className="h-screen w-screen flex items-center justify-center">
-          <div className=" loading-icon "></div>
-        </div>
+        <LoadingScreen />
       ) : (
         <div className="grid gap-4 md:gap-8 grid-cols-2 lg:grid-cols-3">
           {recipes.map((recipe) => (

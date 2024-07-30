@@ -4,6 +4,7 @@ import { getRecipeDetailsById } from "../recipiesData";
 import { useNavigate } from "react-router-dom";
 
 import { IoArrowBackCircle } from "react-icons/io5";
+import { LoadingScreen } from "./loadingScreen";
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -32,11 +33,7 @@ const RecipeDetails = () => {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="h-screen w-screen flex items-center justify-center">
-        <div className=" loading-icon "></div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   if (!recipe) {

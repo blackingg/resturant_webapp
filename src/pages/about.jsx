@@ -6,25 +6,25 @@ function About() {
       <h1 className="text-4xl font-bold mb-4 text-[#B22222]">About Us</h1>
       <div className="text-lg mb-4 text-left max-w-2xl ">
         <p className="mb-4">
-          Welcome to our Pizza Hut website! Here, you can explore our delicious
-          menu, discover new promotions, and learn more about our commitment to
-          delivering the best pizza experience.
+          Welcome to our The Breakfast Place's website! Here, you can explore
+          our delicious menu, discover new promotions, and learn more about our
+          commitment to delivering the best breakfast experience.
         </p>
         <p className="mb-4">
-          At Pizza Hut, we pride ourselves on using high-quality ingredients to
-          create pizzas that not only taste great but also bring people
-          together. Whether you're craving a classic pepperoni pizza or
-          something more adventurous like our specialty pizzas, we have
-          something for everyone.
+          At The Breakfast Place, we pride ourselves on using high-quality
+          ingredients to create breakfast that not only taste great but also
+          bring people together.
         </p>
         <p className="mb-4">
-          Our website makes it easy for you to order your favorite pizzas
-          online, find a nearby Pizza Hut location, and stay updated with our
-          latest deals and offers. We aim to provide a seamless online
-          experience so you can enjoy our delicious pizzas with minimal hassle.
+          Our website makes it easy for you to order your favorite breakfast
+          dishes online, find a nearby Breakfast Place location, and stay
+          updated with our latest deals and offers. We aim to provide a seamless
+          online experience so you can enjoy our delicious breakfast with
+          minimal hassle.
         </p>
         <p className="mb-4">
-          Thank you for choosing Pizza Hut. We look forward to serving you!
+          Thank you for choosing The Breakfast Place. We look forward to serving
+          you!
         </p>
       </div>
       <div className="text-lg mb-4 max-w-2xl">
@@ -32,9 +32,10 @@ function About() {
           About the Developer
         </h2>
         <p className="mb-4 text-left">
-          Hi, I'm Mubarak Odetunde, the developer behind this amazing Pizza Hut
-          project. With years of experience in software development, I
-          specialize in creating dynamic and user-friendly web applications.
+          Hi, I'm Mubarak Odetunde, the developer behind this amazing The
+          Breakfast Place project. With years of experience in software
+          development, I specialize in creating dynamic and user-friendly web
+          applications.
         </p>
         <p className="mb-4 text-left">
           My goal is to leverage the latest technologies to build solutions that

@@ -9,19 +9,19 @@ const spoonacularService = axios.create({
   },
 });
 
-export const getPizzaRecipes = async () => {
+export const getBreakfastRecipes = async () => {
   try {
     const response = await spoonacularService.get("/complexSearch", {
       params: {
-        query: "pizza",
+        query: "breakfast",
         number: 25,
       },
     });
     const data = response.data;
-    localStorage.setItem("pizzaRecipes", JSON.stringify(data));
+    localStorage.setItem("breakfastRecipes", JSON.stringify(data));
     return data;
   } catch (error) {
-    console.error("Error fetching pizza recipes:", error);
+    console.error("Error fetching breakfast recipes:", error);
     throw error;
   }
 };

@@ -56,14 +56,14 @@ const RecipeDetails = () => {
   }
 
   return (
-    <div className="bg-gray-100 p-4 px-32 pt-24 pb-16">
+    <div className="bg-gray-100 p-4 px-10 pt-24 pb-16">
       <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold mb-4 text-[#B22222]">
+        <h1 className="text-4xl font-bold mb-4 text-[#6F4E37]">
           {recipe.title}
         </h1>
         <button
           onClick={handleBackClick}
-          className="mb-4 text-[#B22222] font-semibold hover:underline"
+          className="mb-4 text-[#6F4E37] font-semibold hover:underline"
         >
           <IoArrowBackCircle size={30} />
         </button>

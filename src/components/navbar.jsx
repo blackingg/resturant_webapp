@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CiPizza } from "react-icons/ci";
+import { MdEmojiFoodBeverage } from "react-icons/md";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useLocation, Link } from "react-router-dom";
 
@@ -18,8 +18,8 @@ const Navbar = ({ items }) => {
 
   return (
     <nav className="z-50 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
-      <CiPizza
-        color="#B22222"
+      <MdEmojiFoodBeverage
+        color="#6F4E37"
         size={50}
         className=""
       />
@@ -31,12 +31,12 @@ const Navbar = ({ items }) => {
         {menuOpen ? (
           <FaTimes
             size={30}
-            color="#B22222"
+            color="#6F4E37"
           />
         ) : (
           <FaBars
             size={30}
-            color="#B22222"
+            color="#6F4E37"
           />
         )}
       </div>
@@ -50,10 +50,10 @@ const Navbar = ({ items }) => {
           <li key={item.page}>
             <Link
               to={item.page}
-              className={`flex justify-center items-center gap-1 rounded-md md:bg-[#ffd900ee] px-3 py-2 text-sm font-semibold text-[green-700] md:hover:text-[#B22222] ${
+              className={`flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold text-[green-700] md:hover:text-[#6F4E37] ${
                 currentPage === `/${item.page}`
-                  ? "active text-[#B22222] italic md:hover:shadow-none"
-                  : "md:shadow-lg md:shadow-[#b2222251] "
+                  ? "active text-[#6F4E37] italic md:hover:shadow-none"
+                  : "md:shadow-lg md:shadow-[#6F4E37] text-[#ece0d7]"
               }`}
               onClick={() => setMenuOpen(false)}
             >

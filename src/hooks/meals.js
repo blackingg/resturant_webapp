@@ -57,9 +57,36 @@ export const INGREDIENTS = {
   },
 };
 
+export const DRINKS = {
+  appleJuice: {
+    src: BASE_URL + "Apple_juice.glb",
+    price: 2.0,
+    icon: "☕",
+  },
+  grapeJuice: {
+    src: BASE_URL + "Grape_Juice.glb",
+    price: 3.0,
+    icon: "🧃",
+  },
+  orangeJuice: {
+    src: BASE_URL + "Orange_Juice.glb",
+    price: 3.0,
+    icon: "🧃",
+  },
+  milk: {
+    src: BASE_URL + "milk.glb",
+    price: 3.0,
+    icon: "🧃",
+  },
+};
+
 // Preload models
 Object.keys(INGREDIENTS).forEach((ingredient) => {
   useGLTF.preload(INGREDIENTS[ingredient].src);
+});
+
+Object.keys(DRINKS).forEach((drink) => {
+  useGLTF.preload(DRINKS[drink].src);
 });
 
 export const useSandwich = create((set) => {
@@ -114,6 +141,46 @@ export const useSandwich = create((set) => {
         return {
           total: newTotal,
           ingredients: newIngredients,
+        };
+      }),
+    setAddedToCart: (addedToCart) => set({ addedToCart }),
+  };
+});
+
+export const useDrinks = create((set) => {
+  const getInitialState = () => {
+    const storedDrink = JSON.parse(localStorage.getItem("drink"));
+    const storedTotal = JSON.parse(localStorage.getItem("drinkTotal"));
+    return {
+      drink: storedDrink || { name: "milk", id: 0 },
+      total: storedTotal || DRINKS["milk"].price,
+      addedToCart: false,
+    };
+  };
+
+  return {
+    ...getInitialState(),
+    setDrink: (drinkName) =>
+      set((state) => {
+        const newDrink = { name: drinkName, id: state.drink.id + 1 };
+        const newTotal = DRINKS[drinkName].price;
+
+        localStorage.setItem("drink", JSON.stringify(newDrink));
+        localStorage.setItem("drinkTotal", JSON.stringify(newTotal));
+
+        return {
+          drink: newDrink,
+          total: newTotal,
+        };
+      }),
+    removeDrink: () =>
+      set(() => {
+        localStorage.removeItem("drink");
+        localStorage.removeItem("drinkTotal");
+
+        return {
+          total: 0,
+          drink: null,
         };
       }),
     setAddedToCart: (addedToCart) => set({ addedToCart }),

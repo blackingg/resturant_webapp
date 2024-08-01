@@ -1,5 +1,5 @@
 import { Float, Gltf, Text3D } from "@react-three/drei";
-import { INGREDIENTS, useSandwich } from "../hooks/useSandwich";
+import { INGREDIENTS, useSandwich } from "../hooks/meals";
 
 import { Suspense } from "react";
 

@@ -1,7 +1,7 @@
 import { ContactShadows } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { useSandwich } from "../hooks/useSandwich";
+import { useSandwich } from "../hooks/meals";
 import { Ingredient } from "./ingredents";
 const INGREDIENT_SPACING = 0.2;
 const INGREDIENT_SPACING_FINAL = 0.06;

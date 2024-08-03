@@ -16,7 +16,6 @@ const Recipes = () => {
         if (storedRecipes) {
           const parsedRecipes = JSON.parse(storedRecipes);
           setRecipes(parsedRecipes.results);
-          console.log(parsedRecipes.results);
         } else {
           const data = await getBreakfastRecipes();
           setRecipes(data.results);

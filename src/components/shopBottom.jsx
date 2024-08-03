@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
-import { INGREDIENTS, useSandwich, DRINKS, useDrinks } from "../hooks/meals";
+import { INGREDIENTS, useSandwich } from "../hooks/useSandwich";
+import { DRINKS, useDrinks } from "../hooks/useDrinks";
 import { FaShoppingCart } from "react-icons/fa";
-import { IoIosClose } from "react-icons/io";
 
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export default function ShopBottom({ selectedType }) {
+export default function ShopBottom({
+  selectedType,
+  storedSelectedDrink,
+  storedSelectedMeal,
+}) {
   const addIngredient = useSandwich((state) => state.addIngredient);
   const setDrink = useDrinks((state) => state.setDrink);
   const [addedToCartSandwich, setAddedToCartSandwich] = useSandwich((state) => [
@@ -40,13 +43,6 @@ export default function ShopBottom({ selectedType }) {
 
   const addedToCart =
     selectedType === "Sandwiches" ? addedToCartSandwich : addedToCartDrink;
-  useEffect(() => {
-    console.log("sandwichTotal:", sandwichTotal);
-    console.log("drinkTotal:", drinkTotal);
-
-    console.log("addedToCartSandwich:", addedToCartSandwich);
-    console.log("addedToCartDrink:", addedToCartDrink);
-  });
   return (
     <div className="fixed bottom-0 px-5 py-2 left-0 right-0 bg-white shadow-md">
       <div className="p-3 shadow-md">
@@ -54,7 +50,24 @@ export default function ShopBottom({ selectedType }) {
           <div>
             <h3 className="text-lg font-bold">Total - ${total.toFixed(2)}</h3>
             <p className="text-gray-600 mt-1 mb-4">
-              Your total order is ${sandwichTotal + drinkTotal}.<br />
+              Your total order is {storedSelectedDrink.name} and{" "}
+              {storedSelectedMeal.map((ingredient, index) => {
+                <span key={index}>
+                  {ingredient.name}
+                  {", "}
+                </span>;
+              })}
+              {storedSelectedMeal.map((ingredient, index) => (
+                <span key={index}>
+                  {ingredient.name}
+                  {", "}
+                </span>
+              ))}
+              which amounts to{" "}
+              <span className="font-semibold">
+                ${sandwichTotal + drinkTotal}
+              </span>
+              .<br />
               Order sent successfully, it will be ready in 5 minutes! The
               Breakfast Place will directly deliver it to your address
             </p>

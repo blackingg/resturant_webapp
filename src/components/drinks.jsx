@@ -1,11 +1,9 @@
-import { Float, Gltf, Text3D } from "@react-three/drei";
-import { DRINKS, useDrinks } from "../hooks/meals";
+import { Float, Gltf } from "@react-three/drei";
+import { DRINKS, useDrinks } from "../hooks/useDrinks";
 
 import { Suspense } from "react";
 
 import { animated, useSpring } from "@react-spring/three";
-
-import fontPath from "../fonts/font.json";
 
 const INGREDIENT_SCALE = 3;
 const INGREDIENT_SCALE_Y = 5;
@@ -28,7 +26,6 @@ export const Drink = ({ ingredient, showPrice, ...props }) => {
       scale={scale}
       position-y={positionY}
     >
-      
       <Float
         floatingRange={addedToCart ? [0, 0] : [-0.01, 0.01]}
         speed={addedToCart ? 0 : 4}

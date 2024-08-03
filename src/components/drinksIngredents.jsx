@@ -1,16 +1,19 @@
 import { ContactShadows } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import { useDrinks } from "../hooks/meals";
+import { useDrinks } from "../hooks/useDrinks";
 import { Drink } from "./drinks";
+import useStore from "../hooks/useStore";
 
 export const DrinkModel = () => {
   const drink = useRef();
   const selectedDrink = useDrinks((state) => state.drink); // Get the selected drink
   const addedToCart = useDrinks((state) => state.addedToCart);
 
+  const setSelectedDrink = useStore((state) => state.setSelectedDrink);
+
   useEffect(() => {
-    console.log(selectedDrink);
+    setSelectedDrink(selectedDrink);
   });
 
   useFrame(() => {

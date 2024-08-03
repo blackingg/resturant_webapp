@@ -4,16 +4,18 @@ import { Suspense, useState } from "react";
 import { SandwichIngredents } from "../components/SandwishIngredents";
 
 import { DrinkModel } from "../components/drinksIngredents";
-import ShopButtom from "../components/shopBottom";
-
-import { IoIosClose } from "react-icons/io";
 
 import { Scroll, ScrollControls } from "@react-three/drei";
 import Sidebar from "../components/sideBar";
 import ShopBottom from "../components/shopBottom";
 
+import useStore from "../hooks/useStore";
+
 function Shop() {
   const [selectedType, setSelectedType] = useState("Sandwiches");
+
+  const storedSelectedDrink = useStore((state) => state.storedSelectedDrink);
+  const storedSelectedMeal = useStore((state) => state.storedSelectedMeal);
 
   return (
     <div className="relative h-screen ">
@@ -49,7 +51,11 @@ function Shop() {
           setSelectedType={setSelectedType}
         />
         <div className="fixed bottom-0 px-5 py-2 left-0 right-0 bg-white shadow-md">
-          <ShopBottom selectedType={selectedType} />
+          <ShopBottom
+            selectedType={selectedType}
+            storedSelectedDrink={storedSelectedDrink}
+            storedSelectedMeal={storedSelectedMeal}
+          />
         </div>
       </MotionConfig>
     </div>

@@ -23,12 +23,12 @@ function App() {
     { label: "About Us", page: "about", sign: IoMdInformationCircle },
   ];
 
-  const [started, setStarted] = useState(false);
+  const [loading, setLoading] = useState(false);
   return (
     <>
       <LoadingScreen
-        started={started}
-        setStarted={setStarted}
+        loading={loading}
+        setLoading={setLoading}
       />
       <Navbar items={navItems} />
       <Routes>

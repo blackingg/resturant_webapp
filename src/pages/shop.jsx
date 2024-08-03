@@ -49,9 +49,7 @@ function Shop() {
           setSelectedType={setSelectedType}
         />
         <div className="fixed bottom-0 px-5 py-2 left-0 right-0 bg-white shadow-md">
-          <ShopBottom
-            selectedType={selectedType}
-          />
+          <ShopBottom selectedType={selectedType} />
         </div>
       </MotionConfig>
     </div>

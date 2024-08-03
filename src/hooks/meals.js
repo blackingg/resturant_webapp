@@ -60,17 +60,17 @@ export const INGREDIENTS = {
 export const DRINKS = {
   appleJuice: {
     src: BASE_URL + "Apple_juice.glb",
-    price: 2.0,
+    price: 6.5,
     icon: "☕",
   },
   grapeJuice: {
     src: BASE_URL + "Grape_Juice.glb",
-    price: 3.0,
+    price: 6.0,
     icon: "🧃",
   },
   orangeJuice: {
     src: BASE_URL + "Orange_Juice.glb",
-    price: 3.0,
+    price: 5.0,
     icon: "🧃",
   },
   milk: {
@@ -132,14 +132,14 @@ export const useSandwich = create((set) => {
         const newIngredients = state.ingredients.filter(
           (ing) => ing.id !== ingredient.id
         );
-        const newTotal =
+        const newTotalSandwich =
           state.total - (INGREDIENTS[ingredientToRemove.name]?.price || 0);
 
         localStorage.setItem("ingredients", JSON.stringify(newIngredients));
-        localStorage.setItem("total", JSON.stringify(newTotal));
+        localStorage.setItem("total", JSON.stringify(newTotalSandwich));
 
         return {
-          total: newTotal,
+          total: newTotalSandwich,
           ingredients: newIngredients,
         };
       }),
@@ -163,14 +163,14 @@ export const useDrinks = create((set) => {
     setDrink: (drinkName) =>
       set((state) => {
         const newDrink = { name: drinkName, id: state.drink.id + 1 };
-        const newTotal = DRINKS[drinkName].price;
+        const newTotalDrinks = DRINKS[drinkName].price;
 
         localStorage.setItem("drink", JSON.stringify(newDrink));
-        localStorage.setItem("drinkTotal", JSON.stringify(newTotal));
+        localStorage.setItem("drinkTotal", JSON.stringify(newTotalDrinks));
 
         return {
           drink: newDrink,
-          total: newTotal,
+          total: newTotalDrinks,
         };
       }),
     removeDrink: () =>

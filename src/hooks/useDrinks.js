@@ -6,22 +6,22 @@ const BASE_URL = "/models/";
 export const DRINKS = {
   appleJuice: {
     src: BASE_URL + "Apple_juice.glb",
-    price: 6.5,
+    price: 6500,
     icon: "☕",
   },
   grapeJuice: {
     src: BASE_URL + "Grape_Juice.glb",
-    price: 6.0,
+    price: 6000,
     icon: "🧃",
   },
   orangeJuice: {
     src: BASE_URL + "Orange_Juice.glb",
-    price: 5.0,
+    price: 5000,
     icon: "🧃",
   },
   milk: {
     src: BASE_URL + "milk.glb",
-    price: 3.0,
+    price: 3000,
     icon: "🧃",
   },
 };

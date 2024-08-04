@@ -59,7 +59,7 @@ export const Cart = () => {
 
           <div className="bg-white overflow-scroll px-12 lg:px-24 pt-32 pb-14">
             <h3 className="text-xl font-bold">
-              Total - ${calculateTotal().toFixed(2)}
+              Total - ₦{calculateTotal().toFixed(2)}
             </h3>
             <div className="mt-5 h-[50%] flex flex-col lg:grid grid-cols-3 grid-rows-3 gap-5">
               {cartItems.length > 0 ? (
@@ -69,7 +69,7 @@ export const Cart = () => {
                     className="mb-4"
                   >
                     <h4 className="font-semibold">
-                      {item.type} - ${(item.total || 0).toFixed(2)}
+                      {item.type} - ₦{(item.total || 0).toFixed(2)}
                     </h4>
                     <p className="text-gray-600">
                       {item.items && item.items.length > 0 ? (

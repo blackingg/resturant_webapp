@@ -71,7 +71,7 @@ export default function ShopBottom({
           <h2 className="text-2xl text-center font-bold">{selectedType}</h2>
           <br />
           <h3 className="text-lg font-bold text-center">
-            Your Creation (${total.toFixed(2)})
+            Your Creation (₦{total})
           </h3>
           <p className="text-center text-gray-600">
             Compose your {selectedType.toLowerCase()} by adding{" "}
@@ -89,7 +89,7 @@ export default function ShopBottom({
                       onClick={() => addIngredient(ingredient)}
                     >
                       {INGREDIENTS[ingredient].icon +
-                        ` ${capitalizeFirstLetter(ingredient)} (+$${INGREDIENTS[
+                        ` ${capitalizeFirstLetter(ingredient)} (+₦${INGREDIENTS[
                           ingredient
                         ].price.toFixed(2)})`}
                     </button>
@@ -105,7 +105,7 @@ export default function ShopBottom({
                       onClick={() => setDrink(drink)}
                     >
                       {DRINKS[drink].icon +
-                        ` ${capitalizeFirstLetter(drink)} (+$${DRINKS[
+                        ` ${capitalizeFirstLetter(drink)} (+₦${DRINKS[
                           drink
                         ].price.toFixed(2)})`}
                     </button>
@@ -116,7 +116,7 @@ export default function ShopBottom({
             className="text-white bg-purple-600 py-2 px-4 rounded-lg font-bold mt-4 w-full hover:bg-purple-700 flex justify-center items-center space-x-2"
             onClick={handleAddToCart}
           >
-            Add to cart (${total.toFixed(2)}) <FaShoppingCart />
+            Add to cart (₦{total}) <FaShoppingCart />
           </button>
           {showPopup && (
             <div className="fixed top-32 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-md">

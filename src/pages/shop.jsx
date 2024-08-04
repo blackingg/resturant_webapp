@@ -1,6 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { SandwichIngredents } from "../components/SandwishIngredents";
 
 import { DrinkModel } from "../components/drinksIngredents";
@@ -11,11 +11,25 @@ import ShopBottom from "../components/shopBottom";
 
 import useStore from "../hooks/useStore";
 
+import { IoCartSharp } from "react-icons/io5";
+import { Cart } from "./cart";
+
 function Shop() {
   const [selectedType, setSelectedType] = useState("Sandwiches");
 
   const storedSelectedDrink = useStore((state) => state.storedSelectedDrink);
   const storedSelectedMeal = useStore((state) => state.storedSelectedMeal);
+
+  const openCart = useStore((state) => state.openCart);
+  const setOpenCart = useStore((state) => state.setOpenCart);
+
+  const handleCartClick = () => {
+    setOpenCart(!openCart);
+  };
+
+  useEffect(() => {
+    console.log("openCart", openCart);
+  });
 
   return (
     <div className="relative h-screen ">
@@ -46,6 +60,19 @@ function Shop() {
             </ScrollControls>
           </Canvas>
         </div>
+        <div
+          onClick={handleCartClick}
+          className=" fixed top-24 right-6 md:right-12 z-40 p-3 rounded-md bg-gray-700"
+        >
+          <IoCartSharp color="#ffa500" />
+        </div>
+
+        {openCart ? (
+          <Cart
+            selectedType={selectedType}
+          />
+        ) : null}
+
         <Sidebar
           selectedType={selectedType}
           setSelectedType={setSelectedType}

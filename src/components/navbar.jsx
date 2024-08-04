@@ -17,7 +17,7 @@ const Navbar = ({ items }) => {
   };
 
   return (
-    <nav className="z-40 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
+    <nav className="z-45 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
       <Link to="/">
         <MdEmojiFoodBeverage
           color="#6F4E37"

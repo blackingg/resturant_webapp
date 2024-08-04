@@ -9,7 +9,7 @@ const Sidebar = ({ selectedType, setSelectedType }) => {
   ];
 
   return (
-    <div className="w-fit fixed bottom-[40%] z-40 flex flex-col h-fit bg-gray-100 text-white">
+    <div className="w-fit fixed bottom-[40%] z-30 flex flex-col h-fit bg-gray-100 text-white">
       {types.map((type) => (
         <button
           key={type.id}

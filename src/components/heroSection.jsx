@@ -61,7 +61,7 @@ const HeroSection = () => {
       <div className="flex flex-col items-start z-20 ml-5 md:ml-16 pt-20 md:pt-12 w-3/5">
         <h1 className="text-4xl text-[#6F4E37] md:w-3/4 h-fit font-bold">
           Welcome to
-         <div className="h-6 lg:h-2"></div>
+          <div className="h-6 lg:h-2"></div>
           <span className="text-7xl md:text-9xl font-semibold">
             The Breakfast Place
           </span>

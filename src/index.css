@@ -18,6 +18,14 @@ body {
   background: linear-gradient(-229deg, white 50%, #ffa500 50%);
 }
 
+.z-45{
+  z-index: 45;
+}
+
+.z-200{
+  z-index: 200;
+}
+
 @media (max-width: 640px) {
   .half-background {
     width: 100vw;

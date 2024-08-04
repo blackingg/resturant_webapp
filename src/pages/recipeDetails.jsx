@@ -32,7 +32,12 @@ const RecipeDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <LoadingScreen />;
+    return (
+      <LoadingScreen
+        loading={loading}
+        setLoading={setLoading}
+      />
+    );
   }
 
   if (!recipe) {

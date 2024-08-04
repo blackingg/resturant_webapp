@@ -6,7 +6,7 @@ import { Ingredient } from "./ingredents";
 import useStore from "../hooks/useStore";
 
 const INGREDIENT_SPACING = 0.2;
-const INGREDIENT_SPACING_FINAL = 0.06;
+const INGREDIENT_SPACING_FINAL = 0.15;
 
 export const SandwichIngredents = ({}) => {
   const sandwich = useRef();
@@ -18,7 +18,7 @@ export const SandwichIngredents = ({}) => {
     : INGREDIENT_SPACING;
   useFrame(() => {
     if (addedToCart) {
-      sandwich.current.rotation.y += 0.01;
+      sandwich.current.rotation.y += 0;
     } else {
       sandwich.current.rotation.y = 0;
     }
@@ -30,7 +30,7 @@ export const SandwichIngredents = ({}) => {
     console.log("ingredients", ingredients);
     setSelectedMeal(ingredients);
   });
-  
+
   return (
     <group position-y={(-ingredients.length * ingredientSpacing) / 2}>
       <group ref={sandwich}>

@@ -24,66 +24,61 @@ const RecipeDetails = () => {
         setRecipe(data);
       } catch (error) {
         console.error("Error fetching recipe details:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchRecipeDetails();
   }, [id]);
 
-  if (loading) {
-    return (
-      <LoadingScreen
-        loading={loading}
-        setLoading={setLoading}
-      />
-    );
-  }
-
-  if (!recipe) {
-    return (
-      <p className="h-screen w-screen flex items-center justify-center gap-5">
-        <h1 className="text-4xl font-bold mb-4 text-[#B22222]">
-          Recipe not found{" "}
-        </h1>
-        <button
-          onClick={handleBackClick}
-          className="mb-4 text-[#B22222] font-semibold hover:underline"
-        >
-          <IoArrowBackCircle size={30} />
-        </button>
-      </p>
-    );
-  }
-
   return (
-    <div className="bg-gray-100 p-4 px-10 pt-24 pb-16">
-      <div className="flex justify-between items-center">
-        <h1 className="text-4xl font-bold mb-4 text-[#6F4E37]">
-          {recipe.title}
-        </h1>
-        <button
-          onClick={handleBackClick}
-          className="mb-4 text-[#6F4E37] font-semibold hover:underline"
-        >
-          <IoArrowBackCircle size={30} />
-        </button>
-      </div>
-      <img
-        src={recipe.image}
-        alt={recipe.title}
-        className="w-full h-64 object-cover rounded-lg mb-4"
-      />
+    <>
+      {loading ? (
+        <LoadingScreen
+        />
+      ) : recipe ? (
+        <div className="bg-gray-100 p-4 px-10 pt-24 pb-16">
+          <div className="flex justify-between items-center">
+            <h1 className="text-4xl font-bold mb-4 text-[#6F4E37]">
+              {recipe.title}
+            </h1>
+            <button
+              onClick={handleBackClick}
+              className="mb-4 text-[#6F4E37] font-semibold hover:underline"
+            >
+              <IoArrowBackCircle size={30} />
+            </button>
+          </div>
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className="w-full h-64 object-cover rounded-lg mb-4"
+          />
 
-      <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
-      <ul className="mb-4 italic list-disc">
-        {recipe.extendedIngredients.map((ingredient) => (
-          <li key={ingredient.id}>{ingredient.original}</li>
-        ))}
-      </ul>
-      <h2 className="text-2xl font-bold mb-2">Instructions</h2>
-      <div dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
-    </div>
+          <h2 className="text-2xl font-bold mb-2">Ingredients</h2>
+          <ul className="mb-4 italic list-disc">
+            {recipe.extendedIngredients.map((ingredient, index) => (
+              <li key={`${ingredient.id}-${index}`}>{ingredient.original}</li>
+            ))}
+          </ul>
+          <h2 className="text-2xl font-bold mb-2">Instructions</h2>
+          <div dangerouslySetInnerHTML={{ __html: recipe.instructions }} />
+        </div>
+      ) : (
+        <p className="h-screen w-screen flex items-center justify-center gap-5">
+          <h1 className="text-4xl font-bold mb-4 text-[#B22222]">
+            Recipe not found{" "}
+          </h1>
+          <button
+            onClick={handleBackClick}
+            className="mb-4 text-[#B22222] font-semibold hover:underline"
+          >
+            <IoArrowBackCircle size={30} />
+          </button>
+        </p>
+      )}
+    </>
   );
 };
 

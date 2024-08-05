@@ -12,18 +12,20 @@ const Recipes = () => {
     const fetchRecipes = async () => {
       setLoading(true);
       try {
-        const storedRecipes = localStorage.getItem("breakfastRecipes".results);
+        const storedRecipes = localStorage.getItem("breakfastRecipes");
         if (storedRecipes) {
           const parsedRecipes = JSON.parse(storedRecipes);
-          setRecipes(parsedRecipes.results);
+          setRecipes(parsedRecipes.results || []);
         } else {
           const data = await getBreakfastRecipes();
           setRecipes(data.results);
+          localStorage.setItem("breakfastRecipes", JSON.stringify(data));
         }
       } catch (error) {
         console.error("Error fetching recipes:", error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchRecipes();

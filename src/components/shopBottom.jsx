@@ -53,7 +53,7 @@ export default function ShopBottom({
     setTimeout(() => {
       setShowPopup(false);
       resetIngredients();
-    }, 3500);
+    }, 2300);
   };
 
   const cancelOrder = () => {

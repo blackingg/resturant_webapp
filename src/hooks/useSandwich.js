@@ -93,6 +93,18 @@ export const useSandwich = create((set) => {
           ingredients: newIngredients,
         };
       }),
+
+    resetIngredients: () =>
+      set(() => {
+        const initialState = getInitailState();
+        localStorage.setItem(
+          "ingredients",
+          JSON.stringify(initialState.ingredients)
+        );
+        localStorage.setItem("total", JSON.stringify(initialState.total));
+        return initialState;
+      }),
+
     removeIngredient: (ingredient) =>
       set((state) => {
         const ingredientToRemove = state.ingredients.find(
@@ -114,6 +126,18 @@ export const useSandwich = create((set) => {
           ingredients: newIngredients,
         };
       }),
+
     setAddedToCart: (addedToCart) => set({ addedToCart }),
   };
 });
+
+function getInitailState() {
+  return {
+    ingredients: [
+      { id: 0, name: "bread" },
+      { id: 1, name: "bread" },
+    ],
+    total: INGREDIENTS["bread"].price * 2,
+    addedToCart: false,
+  };
+}

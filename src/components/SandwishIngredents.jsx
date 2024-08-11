@@ -6,7 +6,7 @@ import { Ingredient } from "./ingredents";
 import useStore from "../hooks/useStore";
 
 const INGREDIENT_SPACING = 0.2;
-const INGREDIENT_SPACING_FINAL = 0.15;
+const INGREDIENT_SPACING_FINAL = 0.05;
 
 export const SandwichIngredents = ({}) => {
   const sandwich = useRef();
@@ -16,9 +16,10 @@ export const SandwichIngredents = ({}) => {
   const ingredientSpacing = addedToCart
     ? INGREDIENT_SPACING_FINAL
     : INGREDIENT_SPACING;
+
   useFrame(() => {
     if (addedToCart) {
-      sandwich.current.rotation.y += 0;
+      sandwich.current.rotation.y += 0.01;
     } else {
       sandwich.current.rotation.y = 0;
     }

@@ -1,6 +1,6 @@
 import { INGREDIENTS, useSandwich } from "../hooks/useSandwich";
 import { DRINKS, useDrinks } from "../hooks/useDrinks";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaTimes } from "react-icons/fa";
 import useStore from "../hooks/useStore";
 import { useState } from "react";
 
@@ -19,6 +19,8 @@ export default function ShopBottom({
     state.addedToCart,
     state.setAddedToCart,
   ]);
+
+  const resetIngredients = useSandwich((state) => state.resetIngredients);
   const [addedToCartDrink, setAddedToCartDrink] = useDrinks((state) => [
     state.addedToCart,
     state.setAddedToCart,
@@ -50,7 +52,8 @@ export default function ShopBottom({
     setShowPopup(true);
     setTimeout(() => {
       setShowPopup(false);
-    }, 3000);
+      resetIngredients();
+    }, 3500);
   };
 
   const cancelOrder = () => {
@@ -77,7 +80,7 @@ export default function ShopBottom({
             Compose your {selectedType.toLowerCase()} by adding{" "}
             {selectedType === "Sandwiches" ? "ingredients" : "drinks"}
           </p>
-          <div className="flex overflow-x-scroll mt-2 mb-2 space-x-2">
+          <div className="flex overflow-x-scroll mt-2 mb-2 pb-2 space-x-2">
             {selectedType === "Sandwiches"
               ? Object.keys(INGREDIENTS).map((ingredient) => (
                   <div
@@ -85,11 +88,11 @@ export default function ShopBottom({
                     className="p-2"
                   >
                     <button
-                      className="py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 cursor-pointer hover:bg-gray-100"
+                      className="py-auto min-h-24 h-fit px-4 rounded-lg border border-gray-300 bg-gray-50 cursor-pointer hover:bg-gray-100"
                       onClick={() => addIngredient(ingredient)}
                     >
                       {INGREDIENTS[ingredient].icon +
-                        ` ${capitalizeFirstLetter(ingredient)} (+₦${INGREDIENTS[
+                        ` ${capitalizeFirstLetter(ingredient)} (₦${INGREDIENTS[
                           ingredient
                         ].price.toFixed(2)})`}
                     </button>
@@ -101,11 +104,11 @@ export default function ShopBottom({
                     className="p-2"
                   >
                     <button
-                      className="py-2 px-4 rounded-lg border border-gray-300 bg-gray-50 cursor-pointer hover:bg-gray-100"
+                      className="py-auto min-h-16 h-fit px-4 rounded-lg border border-gray-300 bg-gray-50 cursor-pointer hover:bg-gray-100"
                       onClick={() => setDrink(drink)}
                     >
                       {DRINKS[drink].icon +
-                        ` ${capitalizeFirstLetter(drink)} (+₦${DRINKS[
+                        ` ${capitalizeFirstLetter(drink)} (₦${DRINKS[
                           drink
                         ].price.toFixed(2)})`}
                     </button>
@@ -119,8 +122,14 @@ export default function ShopBottom({
             Add to cart (₦{total}) <FaShoppingCart />
           </button>
           {showPopup && (
-            <div className="fixed top-32 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-md">
+            <div className="fixed w-auto flex justify-center items-center gap-2 bottom-96 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-md">
               Item added to cart!
+              <FaTimes
+                size={20}
+                color="#ffa500"
+                className=""
+                onClick={cancelOrder}
+              />
             </div>
           )}
         </>

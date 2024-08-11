@@ -35,6 +35,7 @@ export const Ingredient = ({ ingredient, showPrice, ...props }) => {
               e.stopPropagation();
               removeIngredient(ingredient);
             }}
+            visible={!addedToCart}
           >
             <mesh
               position-x={0.7}
@@ -72,7 +73,7 @@ export const Ingredient = ({ ingredient, showPrice, ...props }) => {
         </Suspense>
       )}
       <Float
-        floatingRange={[0, 0]}
+        floatingRange={addedToCart ? [0, 0] : [-0.01, 0.01]}
         speed={addedToCart ? 0 : 4}
         rotationIntensity={0.5}
       >

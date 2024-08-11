@@ -116,8 +116,11 @@ export default function ShopBottom({
                 ))}
           </div>
           <button
-            className="text-white bg-purple-600 py-2 px-4 rounded-lg font-bold mt-4 w-full hover:bg-purple-700 flex justify-center items-center space-x-2"
+            className={`text-white bg-purple-600 py-2 px-4 rounded-lg font-bold mt-4 w-full hover:bg-purple-700 flex justify-center items-center space-x-2 ${
+              showPopup ? "cursor-not-allowed" : "cursor-pointer"
+            }`}
             onClick={handleAddToCart}
+            disabled={showPopup}
           >
             Add to cart (₦{total}) <FaShoppingCart />
           </button>

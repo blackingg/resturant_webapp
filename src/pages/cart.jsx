@@ -57,7 +57,7 @@ export const Cart = () => {
             <FaTimes color="#ffa500" />
           </div>
 
-          <div className="bg-white overflow-scroll px-12 lg:px-24 pt-32 pb-14">
+          <div className="bg-white min-h-screen overflow-y-scroll px-12 lg:px-24 pt-32 pb-14">
             <h3 className="text-xl font-bold">
               Total - ₦{calculateTotal().toFixed(2)}
             </h3>

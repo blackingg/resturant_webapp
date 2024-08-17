@@ -41,6 +41,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [signUpReply, setSignUpReply] = useState("");
+  const [signUpReplyError, setSignUpReplyError] = useState("");
   const signUpFormRef = useRef(null);
   const loginFormRef = useRef(null);
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
       email,
       password,
       options: {
-        data: { username }, // Adding extra user metadata (username)
+        data: { username },
       },
     });
 
@@ -62,7 +63,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
     if (error) {
       console.error("Error signing up:", error.message);
-      setSignUpReply(error.message);
+      setSignUpReplyError(error.message);
     } else {
       setSignUpReply("Sign-up successful! Please check your email to confirm.");
     }
@@ -82,7 +83,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
     if (error) {
       console.error("Error logging in:", error.message);
-      setSignUpReply(error.message);
+      setSignUpReplyError(error.message);
     } else {
       console.log("Login successful!");
       setSignUpReply("Login successful!");
@@ -109,7 +110,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
   useEffect(() => {
     if (!signIn) {
-      navigate("/signIn"); // Handle navigation or other logic when signed out
+      navigate("/signIn");
     }
   }, [signIn, navigate]);
 
@@ -212,8 +213,11 @@ export const SignIn = ({ signIn, setSignIn }) => {
                 </button>
               </div>
             </div>
-            <div className="w-full mt-10 flex justify-center items center text-sm text-black">
-              {signUpReply}
+            <div className="w-full mt-10 flex justify-center items center text-sm">
+              {signUpReply && <p className="text-green-600">{signUpReply}</p>}
+              {signUpReplyError && (
+                <p className="text-red-600">{signUpReplyError}</p>
+              )}
             </div>
           </div>
           <div
@@ -262,9 +266,11 @@ export const SignIn = ({ signIn, setSignIn }) => {
               >
                 {loading ? "Logging In..." : "Login"}
               </button>
-
-              <div className="w-full mt-10 flex justify-center items center text-sm text-black">
-                {signUpReply}
+              <div className="w-full mt-10 flex justify-center items center text-sm">
+                {signUpReply && <p className="text-green-600">{signUpReply}</p>}
+                {signUpReplyError && (
+                  <p className="text-red-600">{signUpReplyError}</p>
+                )}
               </div>
             </form>
             <div className="flex flex-col w-full py-5 px-0 md:px-10 gap-3 border-t-2">

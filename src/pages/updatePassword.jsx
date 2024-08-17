@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/authProvider"; // Assuming you're using the AuthContext for authentication
+import { useAuth } from "../context/authProvider";
 import { Canvas } from "@react-three/fiber";
-import { Sandwich } from "../components/Sandwich";
 
 const UpdatePassword = () => {
-  const { updatePassword } = useAuth(); // Assuming updatePassword function is provided in Auth context
+  const { updatePassword } = useAuth();
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,7 +17,6 @@ const UpdatePassword = () => {
     setMessage("");
     setError("");
 
-    // Password matching validation
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match!");
       return;
@@ -104,7 +102,6 @@ const UpdatePassword = () => {
             attach="background"
             args={["#ffa500"]}
           />
-          <Sandwich />
         </Canvas>
       </div>
     </div>

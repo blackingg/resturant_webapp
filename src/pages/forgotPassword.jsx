@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Sandwich } from "../components/Sandwich";
 
-// Supabase client setup
 const supabase = createClient(
   import.meta.env.VITE_APP_SUPABASE_URL,
   import.meta.env.VITE_APP_SUPABASE_KEY
@@ -23,7 +22,6 @@ const ForgotPassword = () => {
     setMessage("");
     setError("");
 
-    // Sending password reset email with redirectTo option
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/updatePassword`, // Redirect to update password page after reset
     });

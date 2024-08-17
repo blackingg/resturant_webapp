@@ -69,7 +69,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
     }
   };
 
-  // Handle login
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);

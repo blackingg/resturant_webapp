@@ -16,6 +16,8 @@ import { PiOvenFill } from "react-icons/pi";
 import { IoMdInformationCircle } from "react-icons/io";
 import { SignIn } from "./pages/signIn";
 import ForgotPassword from "./pages/forgotPassword";
+import { AuthProvider } from "./context/authProvider";
+import ProtectedRoute from "./components/protectedRoute";
 
 function App() {
   const navItems = [
@@ -29,7 +31,7 @@ function App() {
   const [signIn, setSignIn] = useState(false);
 
   return (
-    <>
+    <AuthProvider>
       <LoadingScreen
         loading={loading}
         setLoading={setLoading}
@@ -65,13 +67,11 @@ function App() {
         <Route
           path="/shop"
           element={
-            <Shop
-              signIn={signIn}
-              setSignIn={setSignIn}
-            />
+            <ProtectedRoute>
+              <Shop />
+            </ProtectedRoute>
           }
         />
-
         <Route
           path="/about"
           element={<About />}
@@ -89,7 +89,7 @@ function App() {
           element={<Navigate to="/" />}
         />
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 

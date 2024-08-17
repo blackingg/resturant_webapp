@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { MdEmojiFoodBeverage } from "react-icons/md";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useLocation, Link } from "react-router-dom";
-
+import { MdEmojiFoodBeverage } from "react-icons/md";
+import { useAuth } from "../context/authProvider";
 const Navbar = ({ items }) => {
+  const { user, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(location.pathname);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setCurrentPage(location.pathname);
-  }, [location]);
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location]);
 
   return (
     <nav className="z-45 w-full fixed backdrop-blur-sm px-4 md:pl-24 md:pr-12 py-4 flex justify-between md:items-center font-medium">
@@ -43,7 +45,7 @@ const Navbar = ({ items }) => {
       </div>
 
       <ul
-        className={`flex-col bg-white  md:bg-transparent shadow-md md:shadow-none py-4 px-12 md:p-0 md:flex-row md:flex gap-1 md:gap-4 md:items-center text-lg ${
+        className={`flex-col bg-white md:bg-transparent shadow-md md:shadow-none py-4 px-12 md:p-0 md:flex-row md:flex gap-1 md:gap-4 md:items-center text-lg ${
           menuOpen ? "flex" : "hidden"
         }`}
       >
@@ -63,6 +65,26 @@ const Navbar = ({ items }) => {
             </Link>
           </li>
         ))}
+
+        {user ? (
+          <li>
+            <button
+              onClick={signOut}
+              className="flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold md:hover:text-[#6F4E37]"
+            >
+              Sign Out
+            </button>
+          </li>
+        ) : (
+          <li>
+            <Link
+              to="/signIn"
+              className="flex justify-center items-center gap-1 rounded-md md:bg-[#D2691E] px-3 py-2 text-sm font-semibold md:hover:text-[#6F4E37]"
+            >
+              Sign In
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

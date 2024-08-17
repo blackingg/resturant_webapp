@@ -65,8 +65,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
       console.error("Error signing up:", error.message);
       setSignUpReplyError(error.message);
     } else {
-      console.log("Sign-up successful! Please check your email to confirm.");
-      signUpReply("Sign-up successful! Please check your email to confirm.");
+      setSignUpReply("Sign-up successful! Please check your email to confirm.");
     }
   };
 
@@ -75,7 +74,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -84,20 +83,27 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
     if (error) {
       console.error("Error logging in:", error.message);
+      setSignUpReplyError(error.message);
     } else {
       console.log("Login successful!");
-      navigate("/shop"); // Navigate to shop after successful login
+      setSignUpReply("Login successful!");
+      navigate("/shop");
+      setSignIn(true);
     }
   };
 
+  useEffect(() => {
+    console.log("signUpReply:", signUpReply);
+  });
+
   const handleSignUpClick_signup = () => {
-    setSignUp(!signup);
+    setSignUp(true);
     toggleForms(true);
     setTargetPosition({ x: 6, y: 3, z: 5 });
   };
 
   const handleSignUpClick_login = () => {
-    setSignUp(!signup);
+    setSignUp(false);
     toggleForms(false);
     setTargetPosition({ x: 9, y: 3, z: 9.2 });
   };
@@ -105,8 +111,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
   useEffect(() => {
     if (!signIn) {
       navigate("/signIn"); // Handle navigation or other logic when signed out
-
-      console.log("signIn:", signIn);
     }
   }, [signIn, navigate]);
 
@@ -133,10 +137,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
       },
     });
   };
-
-  useEffect(() => {
-    console.log("signUpReply:", signUpReply);
-  });
 
   return (
     <div className="w-screen h-screen block lg:grid grid-cols-2 grid-rows-1">
@@ -281,6 +281,10 @@ export const SignIn = ({ signIn, setSignIn }) => {
               >
                 Forgot password?
               </Link>
+            </div>
+            <div className="text-sm text-black">
+              {signUpReply}
+              {signUpReplyError}
             </div>
           </div>
         </div>

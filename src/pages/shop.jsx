@@ -10,8 +10,9 @@ import useStore from "../hooks/useStore";
 import { IoCartSharp } from "react-icons/io5";
 import { Cart } from "./cart";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authProvider"; // Import the useAuth hook
 
-function Shop({ signIn, setSignIn }) {
+function Shop() {
   const [selectedType, setSelectedType] = useState("Sandwiches");
 
   const storedSelectedDrink = useStore((state) => state.storedSelectedDrink);
@@ -20,6 +21,7 @@ function Shop({ signIn, setSignIn }) {
   const openCart = useStore((state) => state.openCart);
   const setOpenCart = useStore((state) => state.setOpenCart);
 
+  const { user } = useAuth(); // Get the user state from AuthContext
   const navigate = useNavigate();
 
   const handleCartClick = () => {
@@ -27,10 +29,11 @@ function Shop({ signIn, setSignIn }) {
   };
 
   useEffect(() => {
-    if (!signIn) {
+    if (!user) {
+      // Check if user is not authenticated
       navigate("/signIn"); // Redirect to signIn page if not signed in
     }
-  }, [signIn, navigate]);
+  }, [user, navigate]); // Depend on the user state
 
   return (
     <div className="relative h-screen">

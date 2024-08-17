@@ -2,19 +2,16 @@ import { MotionConfig } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import { SandwichIngredents } from "../components/SandwishIngredents";
-
 import { DrinkModel } from "../components/drinksIngredents";
-
 import { Scroll, ScrollControls } from "@react-three/drei";
 import Sidebar from "../components/sideBar";
 import ShopBottom from "../components/shopBottom";
-
 import useStore from "../hooks/useStore";
-
 import { IoCartSharp } from "react-icons/io5";
 import { Cart } from "./cart";
+import { useNavigate } from "react-router-dom";
 
-function Shop() {
+function Shop({ signIn, setSignIn }) {
   const [selectedType, setSelectedType] = useState("Sandwiches");
 
   const storedSelectedDrink = useStore((state) => state.storedSelectedDrink);
@@ -23,21 +20,22 @@ function Shop() {
   const openCart = useStore((state) => state.openCart);
   const setOpenCart = useStore((state) => state.setOpenCart);
 
+  const navigate = useNavigate();
+
   const handleCartClick = () => {
     setOpenCart(!openCart);
   };
 
   useEffect(() => {
-    console.log("openCart", openCart);
-  });
+    if (!signIn) {
+      navigate("/signIn"); // Redirect to signIn page if not signed in
+    }
+  }, [signIn, navigate]);
 
   return (
-    <div className="relative h-screen ">
+    <div className="relative h-screen">
       <MotionConfig transition={{ type: "spring" }}>
-        <div
-          className={`absolute inset-0  bottom-[30%] lg:bottom-[45%]
-          } `}
-        >
+        <div className={`absolute inset-0 bottom-[30%] lg:bottom-[45%]`}>
           <Canvas camera={{ position: [-2, 2.5, 5], fov: 30 }}>
             <color
               attach="background"
@@ -62,16 +60,12 @@ function Shop() {
         </div>
         <div
           onClick={handleCartClick}
-          className=" fixed top-24 right-6 md:right-12 z-40 p-3 rounded-md bg-gray-700"
+          className="fixed top-24 right-6 md:right-12 z-40 p-3 rounded-md bg-gray-700"
         >
           <IoCartSharp color="#ffa500" />
         </div>
 
-        {openCart ? (
-          <Cart
-            selectedType={selectedType}
-          />
-        ) : null}
+        {openCart ? <Cart selectedType={selectedType} /> : null}
 
         <Sidebar
           selectedType={selectedType}

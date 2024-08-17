@@ -14,6 +14,8 @@ import { AiFillHome } from "react-icons/ai";
 import { FaCartShopping } from "react-icons/fa6";
 import { PiOvenFill } from "react-icons/pi";
 import { IoMdInformationCircle } from "react-icons/io";
+import { SignIn } from "./pages/signIn";
+import ForgotPassword from "./pages/forgotPassword";
 
 function App() {
   const navItems = [
@@ -24,6 +26,8 @@ function App() {
   ];
 
   const [loading, setLoading] = useState(false);
+  const [signIn, setSignIn] = useState(false);
+
   return (
     <>
       <LoadingScreen
@@ -32,6 +36,24 @@ function App() {
       />
       <Navbar items={navItems} />
       <Routes>
+        <Route
+          path="/signIn"
+          element={
+            <SignIn
+              signIn={signIn}
+              setSignIn={setSignIn}
+            />
+          }
+        />
+        <Route
+          path="/forgotPassword"
+          element={
+            <ForgotPassword
+              signIn={signIn}
+              setSignIn={setSignIn}
+            />
+          }
+        />
         <Route
           path="/"
           element={<Home />}
@@ -42,7 +64,12 @@ function App() {
         />
         <Route
           path="/shop"
-          element={<Shop />}
+          element={
+            <Shop
+              signIn={signIn}
+              setSignIn={setSignIn}
+            />
+          }
         />
 
         <Route

@@ -78,7 +78,7 @@ const HeroSection = () => {
       <MotionConfig transition={{ type: "spring" }}>
         <Canvas camera={{ position: [11, 3, 1] }}>
           <Suspense fallback={null}>
-            <AnimatedGroup />
+            <AnimatedGroup/>
           </Suspense>
         </Canvas>
       </MotionConfig>

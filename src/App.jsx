@@ -18,6 +18,7 @@ import { SignIn } from "./pages/signIn";
 import ForgotPassword from "./pages/forgotPassword";
 import { AuthProvider } from "./context/authProvider";
 import ProtectedRoute from "./components/protectedRoute";
+import UpdatePassword from "./pages/updatePassword";
 
 function App() {
   const navItems = [
@@ -54,6 +55,14 @@ function App() {
               signIn={signIn}
               setSignIn={setSignIn}
             />
+          }
+        />
+        <Route
+          path="/updatePassword"
+          element={
+            <ProtectedRoute>
+              <UpdatePassword />
+            </ProtectedRoute>
           }
         />
         <Route

@@ -41,7 +41,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [signUpReply, setSignUpReply] = useState("");
-  const [signUpReplyError, setSignUpReplyError] = useState("");
   const signUpFormRef = useRef(null);
   const loginFormRef = useRef(null);
   const navigate = useNavigate();
@@ -63,7 +62,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
     if (error) {
       console.error("Error signing up:", error.message);
-      setSignUpReplyError(error.message);
+      setSignUpReply(error.message);
     } else {
       setSignUpReply("Sign-up successful! Please check your email to confirm.");
     }
@@ -83,7 +82,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
     if (error) {
       console.error("Error logging in:", error.message);
-      setSignUpReplyError(error.message);
+      setSignUpReply(error.message);
     } else {
       console.log("Login successful!");
       setSignUpReply("Login successful!");
@@ -213,9 +212,8 @@ export const SignIn = ({ signIn, setSignIn }) => {
                 </button>
               </div>
             </div>
-            <div className="text-sm text-black">
+            <div className="w-full mt-10 flex justify-center items center text-sm text-black">
               {signUpReply}
-              {signUpReplyError}
             </div>
           </div>
           <div
@@ -264,6 +262,10 @@ export const SignIn = ({ signIn, setSignIn }) => {
               >
                 {loading ? "Logging In..." : "Login"}
               </button>
+
+              <div className="w-full mt-10 flex justify-center items center text-sm text-black">
+                {signUpReply}
+              </div>
             </form>
             <div className="flex flex-col w-full py-5 px-0 md:px-10 gap-3 border-t-2">
               <div className="flex items-center gap-2">
@@ -281,10 +283,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
               >
                 Forgot password?
               </Link>
-            </div>
-            <div className="text-sm text-black">
-              {signUpReply}
-              {signUpReplyError}
             </div>
           </div>
         </div>

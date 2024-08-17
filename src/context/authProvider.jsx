@@ -31,11 +31,24 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
       }
     );
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, []);
 
   const signOut = async () => {
     await supabase.auth.signOut();
     setUser(null);
+  };
+
+  const updatePassword = async (newPassword) => {
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) {
+      throw error;
+    }
   };
 
   return (

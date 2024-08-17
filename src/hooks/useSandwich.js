@@ -14,6 +14,16 @@ export const INGREDIENTS = {
     price: 500,
     icon: "🥬",
   },
+  olive: {
+    src: BASE_URL + "Olive_Slice_Oilives_0.glb",
+    price: 5000,
+    icon: "🫒",
+  },
+  pickle: {
+    src: BASE_URL + "Pickle_Slice_Pickles_0.glb",
+    price: 5000,
+    icon: "🥒",
+  },
   mushroom: {
     src: BASE_URL + "Mushroom_Slice_Mushroom_0.glb",
     price: 1000,
@@ -24,10 +34,20 @@ export const INGREDIENTS = {
     price: 500,
     icon: "🍅",
   },
+  onion: {
+    src: BASE_URL + "Onion_Slice_Onion_0.glb",
+    price: 5000,
+    icon: "🧅",
+  },
   cheese: {
     src: BASE_URL + "Cheese_Slice_Cheese_0.glb",
     price: 1000,
     icon: "🧀",
+  },
+  egg: {
+    src: BASE_URL + "Egg_Slice_Egg_0.glb",
+    price: 500,
+    icon: "🍳",
   },
   chicken: {
     src: BASE_URL + "Chicken_Slice_Chicken_0.glb",

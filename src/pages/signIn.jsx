@@ -7,13 +7,11 @@ import { gsap } from "gsap";
 import { Link } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 
-// Supabase client setup
 const supabase = createClient(
   import.meta.env.VITE_APP_SUPABASE_URL,
   import.meta.env.VITE_APP_SUPABASE_KEY
 );
 
-// Camera Controls component
 const CameraControls = ({ targetPosition }) => {
   const { camera } = useThree();
 
@@ -200,6 +198,12 @@ export const SignIn = ({ signIn, setSignIn }) => {
               >
                 {loading ? "Signing Up..." : "Sign Up"}
               </button>
+              <div className="w-full mt-10 flex justify-center items center text-sm">
+                {signUpReply && <p className="text-green-600">{signUpReply}</p>}
+                {signUpReplyError && (
+                  <p className="text-red-600">{signUpReplyError}</p>
+                )}
+              </div>
             </form>
             <div className="flex flex-col w-full p-5 py-5 px-0 md:px-10 gap-5 border-t-2">
               <div className="flex items-center gap-2">
@@ -211,12 +215,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
                   Login
                 </button>
               </div>
-            </div>
-            <div className="w-full mt-10 flex justify-center items center text-sm">
-              {signUpReply && <p className="text-green-600">{signUpReply}</p>}
-              {signUpReplyError && (
-                <p className="text-red-600">{signUpReplyError}</p>
-              )}
             </div>
           </div>
           <div

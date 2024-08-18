@@ -25,6 +25,7 @@ export const Drink = ({ ingredient, showPrice, ...props }) => {
       {...props}
       scale={scale}
       position-y={positionY}
+      rotation={[Math.PI / 30, 1.3, -0.1]}
     >
       <Float
         floatingRange={addedToCart ? [0, 0] : [-0.01, 0.01]}

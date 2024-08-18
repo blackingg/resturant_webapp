@@ -47,9 +47,8 @@ function Shop() {
             <ScrollControls pages={0}>
               <Scroll>
                 <Suspense fallback={null}>
-                  {selectedType === "Sandwiches" ? (
-                    <SandwichIngredents />
-                  ) : (
+                  {selectedType === "Sandwiches" && <SandwichIngredents />}
+                  {selectedType === "Drinks" && (
                     <>
                       <ambientLight />
                       <DrinkModel />

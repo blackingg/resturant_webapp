@@ -35,8 +35,8 @@ export const useDrinks = create((set) => {
     const storedDrink = JSON.parse(localStorage.getItem("drink"));
     const storedTotal = JSON.parse(localStorage.getItem("drinkTotal"));
     return {
-      drink: storedDrink || { name: "milk", id: 0 },
-      total: storedTotal || DRINKS["milk"].price,
+      drink: storedDrink || { name: "orangeJuice", id: 0 },
+      total: storedTotal || DRINKS["orangeJuice"].price,
       addedToCart: false,
     };
   };

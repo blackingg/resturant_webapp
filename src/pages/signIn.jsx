@@ -136,76 +136,79 @@ export const SignIn = ({ signIn, setSignIn }) => {
   };
 
   return (
-    <div className="w-screen h-screen block lg:grid grid-cols-2 grid-rows-1">
-      <div className="absolute lg:relative h-full w-full bg-[#fff] justify-center flex items-center">
-        <div className="z-10 w-[80%] lg:w-[70%] h-[78%] lg:h-[70%] shadow-inner lg:shadow-2xl bg-[#fff] justify-center flex items-center">
+    <div className="w-screen h-screen block lg:grid grid-cols-2 grid-rows-1 justify-center items-center">
+      <div className="absolute lg:relative h-[80%] w-full bg-[#fff] m-auto justify-center flex items-center">
+        <div className="z-10 w-[80%] lg:w-[70%] h-[78%] lg:h-full shadow-inner lg:shadow-2xl bg-[#fff] justify-center flex items-center">
           <div
             ref={signUpFormRef}
             className={`${
               signup ? "block" : "hidden"
             } flex flex-col m-auto w-[80%] h-full justify-left items-center pt-5`}
           >
-            <h1 className="text-[#6F4E37] text-4xl font-bold p-5 w-full">
-              SignUp
-            </h1>
-            <form
-              onSubmit={handleSignUp}
-              className="p-5 w-full h-[60%]"
-            >
-              <label
-                htmlFor="username"
-                className="font-medium text-[#6F4E37]"
+            <div className="h-[70%] w-full flex flex-col justify-left items-center">
+              <h1 className="text-[#6F4E37] text-4xl font-bold p-5 w-full">
+                SignUp
+              </h1>
+              <form
+                onSubmit={handleSignUp}
+                className="p-5 w-full h-[60%]"
               >
-                Username:
-              </label>
-              <input
-                type="text"
-                id="usernameSignUp"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
-              />
-              <label
-                htmlFor="email"
-                className="font-medium text-[#6F4E37] block mb-1 mt-8"
-              >
-                Email:
-              </label>
-              <input
-                type="email"
-                id="emailSignUp"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
-              />
-              <label
-                htmlFor="password"
-                className="font-medium text-[#6F4E37] block mb-1 mt-8"
-              >
-                Password:
-              </label>
-              <input
-                type="password"
-                id="passwordSignUp"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[#6F4E37] text-white py-2 px-3 rounded-md font-bold text-lg mt-8"
-              >
-                {loading ? "Signing Up..." : "Sign Up"}
-              </button>
-              <div className="w-full mt-10 flex justify-center items center text-sm">
-                {signUpReply && <p className="text-green-600">{signUpReply}</p>}
-                {signUpReplyError && (
-                  <p className="text-red-600">{signUpReplyError}</p>
-                )}
-              </div>
-            </form>
-            <div className="flex flex-col w-full p-5 py-5 px-0 md:px-10 gap-5 border-t-2">
+                <label
+                  htmlFor="username"
+                  className="font-medium text-[#6F4E37]"
+                >
+                  Username:
+                </label>
+                <input
+                  type="text"
+                  id="usernameSignUp"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                />
+                <label
+                  htmlFor="email"
+                  className="font-medium text-[#6F4E37] block mb-1 mt-8"
+                >
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  id="emailSignUp"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                />
+                <label
+                  htmlFor="password"
+                  className="font-medium text-[#6F4E37] block mb-1 mt-8"
+                >
+                  Password:
+                </label>
+                <input
+                  type="password"
+                  id="passwordSignUp"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-[#6F4E37] text-white py-2 px-3 rounded-md font-bold text-lg mt-8"
+                >
+                  {loading ? "Signing Up..." : "Sign Up"}
+                </button>
+              </form>
+            </div>
+
+            <div className="w-full h-[10%] mt-10 flex justify-center items center text-sm">
+              {signUpReply && <p className="text-green-600">{signUpReply}</p>}
+              {signUpReplyError && (
+                <p className="text-red-600">{signUpReplyError}</p>
+              )}
+            </div>
+            <div className="flex flex-col h-[20%] w-full p-5 py-5 px-0 md:px-10 gap-5 border-t-2">
               <div className="flex items-center gap-2">
                 <h4>Login here:</h4>
                 <button
@@ -223,54 +226,57 @@ export const SignIn = ({ signIn, setSignIn }) => {
               signup ? "hidden" : "block"
             } flex flex-col m-auto w-[80%] h-full justify-left items-center pt-5`}
           >
-            <h1 className="text-[#6F4E37] text-4xl font-bold p-5 w-full">
-              Login
-            </h1>
-            <form
-              onSubmit={handleLogin}
-              className="p-5 w-full h-[60%]"
-            >
-              <label
-                htmlFor="email"
-                className="font-medium text-[#6F4E37]"
+            <div className="h-[70%] w-full flex flex-col justify-left items-center">
+              <h1 className="text-[#6F4E37] text-4xl font-bold p-5 w-full">
+                Login
+              </h1>
+              <form
+                onSubmit={handleLogin}
+                className="p-5 w-full h-full"
               >
-                Email:
-              </label>
-              <input
-                type="email"
-                id="emailLogin"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
-              />
-              <label
-                htmlFor="password"
-                className="font-medium text-[#6F4E37] block mb-1 mt-8"
-              >
-                Password:
-              </label>
-              <input
-                type="password"
-                id="passwordLogin"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="bg-[#6F4E37] text-white py-2 px-3 rounded-md font-bold text-lg mt-8"
-              >
-                {loading ? "Logging In..." : "Login"}
-              </button>
-              <div className="w-full mt-10 flex justify-center items center text-sm">
-                {signUpReply && <p className="text-green-600">{signUpReply}</p>}
-                {signUpReplyError && (
-                  <p className="text-red-600">{signUpReplyError}</p>
-                )}
-              </div>
-            </form>
-            <div className="flex flex-col w-full py-5 px-0 md:px-10 gap-3 border-t-2">
+                <label
+                  htmlFor="email"
+                  className="font-medium text-[#6F4E37]"
+                >
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  id="emailLogin"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                />
+                <label
+                  htmlFor="password"
+                  className="font-medium text-[#6F4E37] block mb-1 mt-8"
+                >
+                  Password:
+                </label>
+                <input
+                  type="password"
+                  id="passwordLogin"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-[#6F4E37] text-white py-2 px-3 rounded-md font-bold text-lg mt-8"
+                >
+                  {loading ? "Logging In..." : "Login"}
+                </button>
+              </form>
+            </div>
+            <div className="w-full h-[10%] relative buttom-0 m-auto flex justify-center items-center text-sm">
+              {signUpReply && <p className="text-green-600">{signUpReply}</p>}
+              {signUpReplyError && (
+                <p className="text-red-600">{signUpReplyError}</p>
+              )}
+            </div>
+
+            <div className="flex flex-col h-[20%] w-full py-5 px-0 md:px-10 gap-3 border-t-2">
               <div className="flex items-center gap-2">
                 <h4 className="text-sm">No account? Sign up here:</h4>
                 <button

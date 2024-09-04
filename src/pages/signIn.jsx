@@ -137,7 +137,7 @@ export const SignIn = ({ signIn, setSignIn }) => {
 
   return (
     <div className="w-screen h-screen block lg:grid grid-cols-2 grid-rows-1 justify-center items-center">
-      <div className="absolute lg:relative h-[80%] w-full bg-[#fff] m-auto justify-center flex items-center">
+      <div className="absolute lg:relative h-screen lg:h-[80%] w-full bg-[#fff] m-auto justify-center flex items-center">
         <div className="z-10 w-[80%] lg:w-[70%] h-[78%] lg:h-full shadow-inner lg:shadow-2xl bg-[#fff] justify-center flex items-center">
           <div
             ref={signUpFormRef}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getRecipeDetailsById } from "../recipiesData";
+import { getRecipeDetailsById } from "../context/recipiesData";
 import { useNavigate } from "react-router-dom";
 
 import { IoArrowBackCircle } from "react-icons/io5";

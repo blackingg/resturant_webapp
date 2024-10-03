@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getBreakfastRecipes } from "../recipiesData.jsx";
-import { LoadingScreen } from "./loadingScreen.jsx";
+import { getBreakfastRecipes } from "../context/recipiesData.jsx";
 import LoadingDots from "../components/LoadingDots.jsx";
 
 const Recipes = () => {

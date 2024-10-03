@@ -5,12 +5,7 @@ import { Suspense } from "react";
 import { Sandwich } from "../components/Sandwich";
 import { gsap } from "gsap";
 import { Link } from "react-router-dom";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  import.meta.env.VITE_APP_SUPABASE_URL,
-  import.meta.env.VITE_APP_SUPABASE_KEY
-);
+import { useAuth } from "../context/authProvider";
 
 const CameraControls = ({ targetPosition }) => {
   const { camera } = useThree();
@@ -31,7 +26,7 @@ const CameraControls = ({ targetPosition }) => {
   return null;
 };
 
-export const SignIn = ({ signIn, setSignIn }) => {
+export const SignIn = () => {
   const [signup, setSignUp] = useState(false);
   const [targetPosition, setTargetPosition] = useState({ x: 6, y: 3, z: 5 });
   const [email, setEmail] = useState("");
@@ -44,49 +39,45 @@ export const SignIn = ({ signIn, setSignIn }) => {
   const loginFormRef = useRef(null);
   const navigate = useNavigate();
 
-  // Handle sign-up
+  const { signUp, signIn, user } = useAuth(); // Use the AuthContext
+
+  useEffect(() => {
+    if (user) {
+      navigate("/shop");
+    }
+  }, [user, navigate]);
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { username },
-      },
-    });
-
-    setLoading(false);
-
-    if (error) {
+    try {
+      await signUp(email, password, username);
+      setSignUpReply("Sign-up successful!");
+      navigate("/shop");
+    } catch (error) {
       console.error("Error signing up:", error.message);
       setSignUpReplyError(error.message);
-    } else {
-      setSignUpReply("Sign-up successful! Please check your email to confirm.");
     }
+
+    setLoading(false);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      console.error("Error logging in:", error.message);
-      setSignUpReplyError(error.message);
-    } else {
+    try {
+      await signIn(email, password);
       console.log("Login successful!");
       setSignUpReply("Login successful!");
       navigate("/shop");
-      setSignIn(true);
+    } catch (error) {
+      console.error("Error logging in:", error.message);
+      setSignUpReplyError(error.message);
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -104,12 +95,6 @@ export const SignIn = ({ signIn, setSignIn }) => {
     toggleForms(false);
     setTargetPosition({ x: 9, y: 3, z: 9.2 });
   };
-
-  useEffect(() => {
-    if (!signIn) {
-      navigate("/signIn");
-    }
-  }, [signIn, navigate]);
 
   const toggleForms = (showSignUp) => {
     const formToShow = showSignUp

@@ -4,17 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Sandwich } from "../components/Sandwich";
 
-const supabase = createClient(
-  import.meta.env.VITE_APP_SUPABASE_URL,
-  import.meta.env.VITE_APP_SUPABASE_KEY
-);
-
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const { resetPassword } = useAuth();
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
@@ -22,19 +17,16 @@ const ForgotPassword = () => {
     setMessage("");
     setError("");
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/updatePassword`, // Redirect to update password page after reset
-    });
-
-    setLoading(false);
-
-    if (error) {
-      console.error("Error resetting password:", error.message);
-      setError("Error resetting password: " + error.message);
-    } else {
+    try {
+      await resetPassword(email);
       setMessage(
         "Password reset link has been sent to your email. Please check your inbox."
       );
+    } catch (error) {
+      console.error("Error resetting password:", error.message);
+      setError("Error resetting password: " + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 

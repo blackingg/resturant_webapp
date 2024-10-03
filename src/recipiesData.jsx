@@ -5,7 +5,7 @@ const BASE_URL = "https://api.spoonacular.com/recipes";
 const spoonacularService = axios.create({
   baseURL: BASE_URL,
   params: {
-    apiKey: import.meta.env.VITE_API_KEY,
+    apiKey: import.meta.env.VITE_spoonacularService,
   },
 });
 

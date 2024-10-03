@@ -32,7 +32,7 @@ const Recipes = () => {
   }, []);
 
   return (
-    <div className=" bg-gray-100 w-full h-full p-4 px-7 md:px-16 pt-24">
+    <div className=" bg-gray-100 w-full h-full min-h-screen p-4 px-7 md:px-16 pt-24">
       <h1 className="text-4xl font-bold mb-8 text-center text-[#6F4E37]">
         Breakfast Recipes
       </h1>

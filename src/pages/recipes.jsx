@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBreakfastRecipes } from "../recipiesData.jsx";
 import { LoadingScreen } from "./loadingScreen.jsx";
+import LoadingDots from "../components/LoadingDots.jsx";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -37,10 +38,12 @@ const Recipes = () => {
         Breakfast Recipes
       </h1>
       {loading ? (
-        <LoadingScreen
-          loading={loading}
-          setLoading={setLoading}
-        />
+        <div className="flex flex-col items-center justify-center h-64">
+          <LoadingDots />
+          <p className="mt-4 text-[#6F4E37] font-semibold">
+            Loading recipes...
+          </p>
+        </div>
       ) : (
         <div className="grid gap-4 md:gap-8 grid-cols-2 lg:grid-cols-3">
           {recipes.map((recipe) => (

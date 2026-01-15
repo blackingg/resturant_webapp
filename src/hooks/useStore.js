@@ -5,6 +5,7 @@ const useStore = create((set) => ({
   storedSelectedMeal: [],
   openCart: false,
   cartItems: [],
+  editingItemIndex: null,
   setSelectedDrink: (newSelectedDrink) =>
     set({ storedSelectedDrink: newSelectedDrink }),
   setSelectedMeal: (newStoredSelectedMeal) =>
@@ -15,13 +16,27 @@ const useStore = create((set) => ({
       const newItem = { ...item, quantity: 1 };
       return { cartItems: [...state.cartItems, newItem] };
     }),
-  clearCart: () => set({ cartItems: [] }),
+  clearCart: () => set({ cartItems: [], editingItemIndex: null }),
   updateCartItemQuantity: (index, quantity) =>
     set((state) => {
       const updatedItems = state.cartItems.map((item, idx) =>
         idx === index ? { ...item, quantity } : item
       );
       return { cartItems: updatedItems };
+    }),
+  setEditingItem: (index) => set({ editingItemIndex: index }),
+  clearEditingItem: () => set({ editingItemIndex: null }),
+  removeCartItem: (index) =>
+    set((state) => ({
+      cartItems: state.cartItems.filter((_, idx) => idx !== index),
+      editingItemIndex: null,
+    })),
+  updateCartItem: (index, updatedItem) =>
+    set((state) => {
+      const updatedItems = state.cartItems.map((item, idx) =>
+        idx === index ? { ...updatedItem, quantity: item.quantity } : item
+      );
+      return { cartItems: updatedItems, editingItemIndex: null };
     }),
 }));
 

@@ -67,5 +67,22 @@ export const useDrinks = create((set) => {
         };
       }),
     setAddedToCart: (addedToCart) => set({ addedToCart }),
+    
+    // Load drink from a cart item for editing
+    loadDrink: (drinkItem) =>
+      set(() => {
+        const drinkName = drinkItem.name;
+        const newDrink = { name: drinkName, id: 0 };
+        const total = DRINKS[drinkName]?.price || 0;
+        
+        localStorage.setItem("drink", JSON.stringify(newDrink));
+        localStorage.setItem("drinkTotal", JSON.stringify(total));
+        
+        return {
+          drink: newDrink,
+          total,
+          addedToCart: false,
+        };
+      }),
   };
 });

@@ -148,6 +148,28 @@ export const useSandwich = create((set) => {
       }),
 
     setAddedToCart: (addedToCart) => set({ addedToCart }),
+    
+    // Load ingredients from a cart item for editing
+    loadIngredients: (items) =>
+      set(() => {
+        const ingredients = items.map((item, index) => ({
+          id: index,
+          name: item.name,
+        }));
+        const total = ingredients.reduce(
+          (acc, ing) => acc + (INGREDIENTS[ing.name]?.price || 0),
+          0
+        );
+        
+        localStorage.setItem("ingredients", JSON.stringify(ingredients));
+        localStorage.setItem("total", JSON.stringify(total));
+        
+        return {
+          ingredients,
+          total,
+          addedToCart: false,
+        };
+      }),
   };
 });
 

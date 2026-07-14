@@ -14,7 +14,7 @@ export const DrinkModel = () => {
 
   useEffect(() => {
     setSelectedDrink(selectedDrink);
-  });
+  }, [selectedDrink, setSelectedDrink]);
 
   useFrame(() => {
     if (addedToCart) {

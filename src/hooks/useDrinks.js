@@ -7,22 +7,26 @@ export const DRINKS = {
   appleJuice: {
     src: BASE_URL + "Apple_juice.glb",
     price: 6500,
-    icon: "☕",
+    icon: "🍎",
+    label: "Apple Juice",
   },
   grapeJuice: {
     src: BASE_URL + "Grape_Juice.glb",
     price: 6000,
-    icon: "🧃",
+    icon: "🍇",
+    label: "Grape Juice",
   },
   orangeJuice: {
     src: BASE_URL + "Orange_Juice.glb",
     price: 5000,
-    icon: "🧃",
+    icon: "🍊",
+    label: "Fresh Orange Juice",
   },
   milk: {
     src: BASE_URL + "milk.glb",
     price: 3000,
-    icon: "🧃",
+    icon: "🥛",
+    label: "Fresh Milk",
   },
 };
 

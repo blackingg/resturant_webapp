@@ -43,8 +43,8 @@ export const Ingredient = ({ ingredient, showPrice, ...props }) => {
             >
               <planeGeometry args={[0.9, 0.16]} />
               <meshStandardMaterial
-                color="white"
-                opacity={0.42}
+                color="#FFF3E0"
+                opacity={0.75}
                 transparent
               />
             </mesh>
@@ -56,7 +56,8 @@ export const Ingredient = ({ ingredient, showPrice, ...props }) => {
               bevelThickness={0.001}
               position-x={0.42}
             >
-              N{INGREDIENTS[ingredient.name].price.toFixed(2)}
+              N{INGREDIENTS[ingredient.name].price}
+              <meshStandardMaterial color="#2A1A0E" />
             </Text3D>
             <Text3D
               font={fontPath}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/authProvider";
 import { Canvas } from "@react-three/fiber";
+import { Sandwich } from "../components/Sandwich";
 
 const UpdatePassword = () => {
   const { updatePassword } = useAuth();
@@ -35,66 +36,88 @@ const UpdatePassword = () => {
   };
 
   return (
-    <div className="w-screen h-screen block">
-      <div className="absolute z-10 left-1/2 -translate-x-1/2 h-full w-full lg:w-[50%] justify-center flex items-center">
-        <div className="w-[80%] lg:w-[70%] h-[60%] lg:h-[50%] shadow-inner lg:shadow-2xl bg-[#fff] justify-center flex items-center">
-          <div className="flex flex-col m-auto w-[80%] h-full justify-left items-center pt-5 transition-all">
-            <h1 className="text-[#6F4E37] text-4xl font-bold p-5 w-full">
+    <div className="w-screen h-screen block lg:grid grid-cols-2 justify-center items-center bg-[#FDFDFB]">
+      {/* Form Card Container */}
+      <div className="absolute lg:relative h-screen lg:h-full w-full bg-transparent m-auto justify-center flex items-center p-4 md:p-8 z-10">
+        <div className="w-full max-w-md bg-white rounded-3xl border border-[#EADBC8]/40 shadow-[0_15px_40px_rgba(42,26,14,0.06)] p-8 md:p-10 flex flex-col justify-between h-auto min-h-[500px]">
+          <div className="w-full">
+            <h1 className="font-display text-3xl font-bold text-[#2A1A0E] tracking-tight w-full mb-2">
               Update Password
             </h1>
-            <form
-              onSubmit={handlePasswordUpdate}
-              className="p-5 w-full h-[60%]"
-            >
+            <p className="text-sm font-semibold text-[#5C4A3C]/70 mb-6">
+              Create a strong new password to protect your account.
+            </p>
+            
+            <form onSubmit={handlePasswordUpdate} className="w-full">
               <label
                 htmlFor="newPassword"
-                className="font-medium text-[#6F4E37]"
+                className="block text-sm font-bold text-[#2A1A0E] mb-2"
               >
-                New Password:
+                New Password
               </label>
               <input
                 type="password"
                 id="newPassword"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                className="block w-full bg-[#FDFDFB] border border-[#EADBC8] text-[#2A1A0E] placeholder-[#5C4A3C]/40 rounded-md px-4 py-2.5 shadow-sm transition-all focus:border-[#D97706] focus:ring-4 focus:ring-[#D97706]/10 outline-none text-sm"
+                placeholder="••••••••"
                 required
               />
+              
               <label
                 htmlFor="confirmPassword"
-                className="font-medium text-[#6F4E37] block mt-8"
+                className="block text-sm font-bold text-[#2A1A0E] mb-2 mt-5"
               >
-                Confirm Password:
+                Confirm New Password
               </label>
               <input
                 type="password"
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="h-8 block w-full bg-inherit border-b-2 border-[#ffa500] transition-colors focus:border-[#ffa60077] text-[#6F4E37] outline-none"
+                className="block w-full bg-[#FDFDFB] border border-[#EADBC8] text-[#2A1A0E] placeholder-[#5C4A3C]/40 rounded-md px-4 py-2.5 shadow-sm transition-all focus:border-[#D97706] focus:ring-4 focus:ring-[#D97706]/10 outline-none text-sm"
+                placeholder="••••••••"
                 required
               />
+              
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-[#6F4E37] text-white py-2 px-3 rounded-md font-bold text-lg mt-8"
+                className="w-full bg-[#D97706] hover:bg-[#C26405] text-white py-3 px-4 rounded-md font-bold transition-all duration-300 shadow-md shadow-amber-600/10 mt-8 text-sm uppercase tracking-wider"
               >
                 {loading ? "Updating..." : "Update Password"}
               </button>
             </form>
-            <div className="text-sm text-black mt-4">
-              {message && <p className="text-green-600">{message}</p>}
-              {error && <p className="text-red-600">{error}</p>}
-            </div>
+          </div>
+
+          <div className="w-full mt-4 text-center text-xs">
+            {message && <p className="text-green-600 font-semibold">{message}</p>}
+            {error && <p className="text-red-600 font-semibold">{error}</p>}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-[#EADBC8]/40 flex items-center justify-between text-sm">
+            <span className="text-[#5C4A3C] font-medium">Decided not to change?</span>
+            <Link
+              to="/signIn"
+              className="text-[#D97706] hover:text-[#C26405] font-bold transition-colors"
+            >
+              Back to Login
+            </Link>
           </div>
         </div>
       </div>
-      <div className="relative w-full h-full lg:w-full lg:h-full z-0">
+
+      {/* 3D Model Column */}
+      <div className="hidden lg:block relative w-full h-full z-0 bg-[#FFF5EA]">
         <Canvas camera={{ position: [1, 3, 10] }}>
+          <ambientLight intensity={1.5} />
+          <pointLight position={[10, 10, 10]} intensity={1.5} />
           <color
             attach="background"
-            args={["#ffa500"]}
+            args={["#FFF5EA"]}
           />
+          <Sandwich />
         </Canvas>
       </div>
     </div>

@@ -31,7 +31,7 @@ export const QuantityInput = ({
     const value = parseInt(e.target.value);
     if (value >= minQuantity && value <= maxQuantity) {
       setQuantity(value);
-      onQuantityChange(quantity);
+      onQuantityChange(value);
     } else if (value < minQuantity) {
       setQuantity(minQuantity);
       onQuantityChange(minQuantity);
@@ -42,13 +42,14 @@ export const QuantityInput = ({
   };
 
   return (
-    <div className="flex items-center mt-2">
+    <div className="inline-flex items-center mt-2 rounded-md border border-brand-sand bg-white overflow-hidden">
       <button
         onClick={handleReduce}
-        className="bg-[#ffa500] p-2 rounded-l-lg"
+        aria-label="Decrease quantity"
+        className="p-2 text-brand-espresso hover:bg-brand-cream transition-colors disabled:opacity-30 disabled:hover:bg-transparent"
         disabled={quantity <= minQuantity}
       >
-        <FaMinus />
+        <FaMinus size={12} />
       </button>
       <input
         type="number"
@@ -56,14 +57,15 @@ export const QuantityInput = ({
         onChange={handleChange}
         min={minQuantity}
         max={maxQuantity}
-        className="text-black text-center"
+        className="w-10 bg-transparent text-brand-espresso font-semibold text-center focus:outline-none"
       />
       <button
         onClick={handleIncrease}
-        className="bg-[#ffa500] p-2 rounded-r-lg"
+        aria-label="Increase quantity"
+        className="p-2 text-brand-espresso hover:bg-brand-cream transition-colors disabled:opacity-30 disabled:hover:bg-transparent"
         disabled={quantity >= maxQuantity}
       >
-        <FaPlus />
+        <FaPlus size={12} />
       </button>
     </div>
   );

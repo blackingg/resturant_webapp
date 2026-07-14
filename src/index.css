@@ -15,26 +15,18 @@ body {
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(-229deg, white 50%, #ffa500 50%);
-}
-
-.z-45{
-  z-index: 45;
-}
-
-.z-200{
-  z-index: 200;
+  background: linear-gradient(-229deg, #FDFDFB 50%, #FFF3E0 50%);
 }
 
 @media (max-width: 640px) {
   .half-background {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, white 50%, #ffa500 50%);
+    background: linear-gradient(135deg, #FDFDFB 50%, #FFF3E0 50%);
   }
 }
 
 ::selection {
-  background-color: #8b4b74;
-  color: #90b1c8;
+  background-color: #d97706;
+  color: #fff3e0;
 }

@@ -7,7 +7,7 @@ import RecipeDetails from "./pages/recipeDetails";
 import { LoadingScreen } from "./pages/loadingScreen";
 
 import Navbar from "./components/navbar";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import { AiFillHome } from "react-icons/ai";
@@ -30,12 +30,17 @@ function App() {
 
   const [loading, setLoading] = useState(false);
   const [signIn, setSignIn] = useState(false);
+  const location = useLocation();
+
+  // The shop has its own loading overlay — never show the global one there
+  const isShop = location.pathname.startsWith("/shop");
 
   return (
     <AuthProvider>
       <LoadingScreen
         loading={loading}
         setLoading={setLoading}
+        hidden={isShop}
       />
       <Navbar items={navItems} />
       <Routes>

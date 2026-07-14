@@ -2,13 +2,13 @@ import { ContactShadows } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef, useEffect } from "react";
 import { useSandwich } from "../hooks/useSandwich";
-import { Ingredient } from "./ingredents";
+import { Ingredient } from "./ingredients";
 import useStore from "../hooks/useStore";
 
 const INGREDIENT_SPACING = 0.2;
 const INGREDIENT_SPACING_FINAL = 0.05;
 
-export const SandwichIngredents = ({}) => {
+export const SandwichIngredients = () => {
   const sandwich = useRef();
   const ingredients = useSandwich((state) => state.ingredients);
   const addedToCart = useSandwich((state) => state.addedToCart);
@@ -28,9 +28,8 @@ export const SandwichIngredents = ({}) => {
   const setSelectedMeal = useStore((state) => state.setSelectedMeal);
 
   useEffect(() => {
-    console.log("ingredients", ingredients);
     setSelectedMeal(ingredients);
-  });
+  }, [ingredients, setSelectedMeal]);
 
   return (
     <group position-y={(-ingredients.length * ingredientSpacing) / 2}>

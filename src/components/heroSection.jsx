@@ -57,21 +57,33 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="flex flex-col space-x-10 lg:flex-row h-[100vh] pt-16 lg:pt-10 w-screen">
-      <div className="flex flex-col items-start z-20 ml-5 md:ml-16 pt-20 md:pt-12 w-3/5">
-        <h1 className="text-4xl text-[#6F4E37] md:w-3/4 h-fit font-bold">
+    <div className="flex flex-col space-y-8 lg:flex-row h-[100vh] pt-24 lg:pt-10 w-screen">
+      <div className="flex flex-col items-start z-20 ml-6 md:ml-16 pt-16 md:pt-24 w-11/12 lg:w-3/5">
+        {/* Modern Coffee/Breakfast Badge */}
+        <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#D97706] bg-[#D97706]/10 px-3.5 py-2 rounded-full mb-4">
+          Morning Culinary Excellence
+        </span>
+
+        {/* Premium Layered Headline */}
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[#2A1A0E] tracking-tight leading-tight">
           Welcome to
-          <div className="h-6 lg:h-2"></div>
-          <span className="text-7xl md:text-9xl font-semibold">
+          <span className="text-[#D97706] text-6xl md:text-8xl lg:text-9xl font-bold block mt-2 tracking-tight leading-none">
             The Breakfast Place
           </span>
         </h1>
+
+        {/* Brand Description Sub-Headline */}
+        <p className="text-[#5C4A3C] mt-6 text-base md:text-lg font-medium leading-relaxed max-w-lg">
+          Freshly prepared gourmet morning classics, served daily with artisanal care and farm-fresh ingredients.
+        </p>
+
+        {/* Upgraded Modern CTA Button */}
         <button
           onClick={handleClick}
-          className="bg-[#6F4E37] hover:bg-[#5a3e2d] shadow-lg shadow-[#6F4E37] hover:shadow-none mt-10 py-4 px-7 flex items-center justify-center gap-1 text-base text-white font-semibold rounded transition duration-300"
+          className="bg-[#D97706] hover:bg-[#C26405] shadow-lg shadow-amber-600/10 hover:shadow-none hover:translate-y-[-2px] mt-8 py-4 px-8 flex items-center justify-center gap-2 text-base text-white font-bold rounded-md transition-all duration-300"
         >
-          SHOP
-          <FaCartShopping />
+          EXPLORE THE SHOP
+          <FaCartShopping size={18} />
         </button>
       </div>
 
